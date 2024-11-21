@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect } from 'react'
-import AppReducer from './AppReducer'
+import appReducer from './AppReducer'
 
 const initialState = {
   transactions: JSON.parse(localStorage.getItem('transactions')) || [],
@@ -8,7 +8,7 @@ const initialState = {
 export const GlobalContext = createContext(initialState)
 
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState)
+  const [state, dispatch] = useReducer(appReducer, initialState)
 
   useEffect(() => {
     localStorage.setItem('transactions', JSON.stringify(state.transactions))
